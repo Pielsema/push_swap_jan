@@ -1,0 +1,14 @@
+[bench] disorder: 100.00%
+[bench] strategy: simple O(n2)
+[bench] total: 8
+[bench] sa: 1
+[bench] sb: 0
+[bench] ss: 0
+[bench] pa: 2
+[bench] pb: 2
+[bench] ra: 0
+[bench] rb: 0
+[bench] rr: 0
+[bench] rra: 3
+[bench] rrb: 0
+[bench] rrr: 0
