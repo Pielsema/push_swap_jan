@@ -119,9 +119,9 @@ outside the signed 32-bit integer range.
 ## Resources And AI Usage
 
 Resources used or useful for this project:
-
+Code Vault's "Linked lists for beginners" series was fundamental for the development of this project. As well as geeksforgeeks.org explanations of the functionality of the most common sorting algorithms.
 AI was used as a review and implementation assistant for repetitive or
-cross-checking tasks.
+cross-checking tasks. 
 
 ## Contributions
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: pielsema <pielsema@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/11 14:27:44 by pielsema          #+#    #+#             */
+/*   Updated: 2026/08/11 14:31:05 by pielsema         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static size_t	count_words(char const *s, char c)
@@ -30,8 +42,6 @@ char	**ft_split(char const *s, char c)
 	size_t	i;
 	size_t	len;
 
-	if (!s)
-		return (NULL);
 	out = ft_calloc(count_words(s, c) + 1, sizeof(char *));
 	if (!out)
 		return (NULL);
