@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static char	*op_name(int op)
+char	*op_name(int op)
 {
 	if (op == OP_SA)
 		return ("sa");
@@ -51,7 +51,7 @@ static void	print_disorder(double disorder)
 	ft_putendl_fd("%", 2);
 }
 
-static int	total_ops(t_bench *bench)
+int	total_ops(t_bench *bench)
 {
 	int	i;
 	int	total;

@@ -33,8 +33,7 @@ int	rra(t_stack **stack_a, t_bench *bench)
 {
 	if (reverse_rotate(stack_a) == -1)
 		return (-1);
-	ft_putendl_fd("rra", 1);
-	count_op(bench, OP_RRA);
+	emit_op(bench, OP_RRA);
 	return (0);
 }
 
@@ -42,18 +41,18 @@ int	rrb(t_stack **stack_b, t_bench *bench)
 {
 	if (reverse_rotate(stack_b) == -1)
 		return (-1);
-	ft_putendl_fd("rrb", 1);
-	count_op(bench, OP_RRB);
+	emit_op(bench, OP_RRB);
 	return (0);
 }
 
 int	rrr(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
+	if (!stack_a || !stack_b)
+		return (-1);
 	if ((ft_lstsize_stack(*stack_a) < 2) || (ft_lstsize_stack(*stack_b) < 2))
 		return (-1);
 	reverse_rotate(stack_a);
 	reverse_rotate(stack_b);
-	ft_putendl_fd("rrr", 1);
-	count_op(bench, OP_RRR);
+	emit_op(bench, OP_RRR);
 	return (0);
 }

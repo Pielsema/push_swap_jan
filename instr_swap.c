@@ -36,8 +36,7 @@ int	sa(t_stack **stack_a, t_bench *bench)
 {
 	if (swap(stack_a) == -1)
 		return (-1);
-	ft_putendl_fd("sa", 1);
-	count_op(bench, OP_SA);
+	emit_op(bench, OP_SA);
 	return (0);
 }
 
@@ -45,8 +44,7 @@ int	sb(t_stack **stack_b, t_bench *bench)
 {
 	if (swap(stack_b) == -1)
 		return (-1);
-	ft_putendl_fd("sb", 1);
-	count_op(bench, OP_SB);
+	emit_op(bench, OP_SB);
 	return (0);
 }
 
@@ -54,7 +52,6 @@ int	ss(t_stack **a, t_stack **b, t_bench *bench)
 {
 	if (swap(a) == -1 || swap(b) == -1)
 		return (-1);
-	ft_putendl_fd("ss", 1);
-	count_op(bench, OP_SS);
+	emit_op(bench, OP_SS);
 	return (0);
 }

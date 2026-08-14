@@ -38,3 +38,11 @@ void	free_stack(t_stack **stack)
 		*stack = tmp;
 	}
 }
+
+void	stack_alloc_error(t_stack **stack, char **args, int argc)
+{
+	if (argc == 2)
+		ft_free_array(args);
+	free_stack(stack);
+	ft_error("Error");
+}

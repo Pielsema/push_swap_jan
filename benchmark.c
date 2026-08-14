@@ -18,22 +18,24 @@ static void	set_strategy(t_bench *bench, char *name, char *complexity)
 	bench->complexity = complexity;
 }
 
-void	init_bench(t_bench *bench, int enabled, int mode, t_stack *a)
+void	init_bench(t_bench *bench, t_options *options, t_stack *a)
 {
 	int	i;
 
 	i = 0;
-	bench->enabled = enabled;
+	bench->enabled = options->bench;
 	bench->disorder = compute_disorder(a);
 	while (i < 11)
 		bench->ops[i++] = 0;
-	if (mode == SIMPLE || (mode == ADAPTIVE && bench->disorder < 0.2))
+	if (options->mode == SIMPLE
+		|| (options->mode == ADAPTIVE && bench->disorder < 0.2))
 		set_strategy(bench, "simple", "O(n2)");
-	else if (mode == MEDIUM || (mode == ADAPTIVE && bench->disorder < 0.5))
+	else if (options->mode == MEDIUM
+		|| (options->mode == ADAPTIVE && bench->disorder < 0.5))
 		set_strategy(bench, "medium", "O(n sqrt(n))");
-	else if (mode == COMPLEX || mode == ADAPTIVE)
+	else if (options->mode == COMPLEX || options->mode == ADAPTIVE)
 		set_strategy(bench, "complex", "O(n log n)");
-	if (mode == ADAPTIVE)
+	if (options->mode == ADAPTIVE)
 		bench->strategy = "adaptive";
 }
 
@@ -41,4 +43,10 @@ void	count_op(t_bench *bench, int op)
 {
 	if (bench && op >= 0 && op < 11)
 		bench->ops[op]++;
+}
+
+void	emit_op(t_bench *bench, int op)
+{
+	ft_putendl_fd(op_name(op), 1);
+	count_op(bench, op);
 }

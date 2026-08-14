@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-void	parse_options(int *argc, char ***argv, t_app *app)
+void	parse_options(int *argc, char ***argv, t_options *options)
 {
-	app->debug = parse_debug(argc, *argv);
-	app->bench_enabled = parse_bench(argc, *argv);
-	app->mode = parse_mode(argc, argv);
-	app->debug |= parse_debug(argc, *argv);
-	app->bench_enabled |= parse_bench(argc, *argv);
+	options->debug = parse_debug(argc, *argv);
+	options->bench = parse_bench(argc, *argv);
+	options->mode = parse_mode(argc, argv);
+	options->debug |= parse_debug(argc, *argv);
+	options->bench |= parse_bench(argc, *argv);
 }

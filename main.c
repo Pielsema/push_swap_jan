@@ -34,9 +34,13 @@ static void	init_stack(t_stack **stack, int argc, char **argv)
 		i = 1;
 		args = argv;
 	}
+	if (!args || !args[i])
+		ft_error("Error");
 	while (args[i])
 	{
 		new = ft_lstnew_stack(ft_atoi(args[i]));
+		if (!new)
+			stack_alloc_error(stack, args, argc);
 		ft_lstadd_back_stack(stack, new);
 		i++;
 	}
@@ -70,14 +74,14 @@ static int	run_app(t_app *app)
 	if (is_sorted(app->a))
 	{
 		print_bench(&app->bench);
-		if (app->debug)
+		if (app->options.debug)
 			debug_print_stacks(app->a, app->b);
 		free_stack(&app->a);
 		return (0);
 	}
-	sort_stack(&app->a, &app->b, app->mode, &app->bench);
+	sort_stack(&app->a, &app->b, app->options.mode, &app->bench);
 	print_bench(&app->bench);
-	if (app->debug)
+	if (app->options.debug)
 		debug_print_stacks(app->a, app->b);
 	free_stack(&app->a);
 	free_stack(&app->b);
@@ -90,11 +94,11 @@ int	main(int argc, char **argv)
 
 	if (argc < 2)
 		return (0);
-	parse_options(&argc, &argv, &app);
+	parse_options(&argc, &argv, &app.options);
 	ft_check_args(argc, argv);
 	app.a = NULL;
 	app.b = NULL;
 	init_stack(&app.a, argc, argv);
-	init_bench(&app.bench, app.bench_enabled, app.mode, app.a);
+	init_bench(&app.bench, &app.options, app.a);
 	return (run_app(&app));
 }

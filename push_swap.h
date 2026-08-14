@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsobotka <jsobotka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pielsema <pielsema@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/15 13:36:48 by jsobotka          #+#    #+#             */
-/*   Updated: 2026/06/30 22:40:20 by jsobotka         ###   ########.fr       */
+/*   Updated: 2026/08/14 16:27:21 by pielsema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,13 @@ typedef struct s_stack
 	struct s_stack	*next;
 }				t_stack;
 
+typedef struct s_options
+{
+	int		mode;
+	int		debug;
+	int		bench;
+}				t_options;
+
 typedef struct s_bench
 {
 	int		enabled;
@@ -48,23 +55,24 @@ typedef struct s_bench
 
 typedef struct s_app
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_bench	bench;
-	int		mode;
-	int		debug;
-	int		bench_enabled;
+	t_stack		*a;
+	t_stack		*b;
+	t_bench		bench;
+	t_options	options;
 }				t_app;
 
 void		adaptive_sort(t_stack **a, t_stack **b, t_bench *bench);
 void		sort_stack(t_stack **a, t_stack **b, int mode, t_bench *bench);
-void		parse_options(int *argc, char ***argv, t_app *app);
+void		parse_options(int *argc, char ***argv, t_options *options);
 int			parse_debug(int *argc, char **argv);
 int			parse_bench(int *argc, char **argv);
 int			parse_mode(int *argc, char ***argv);
-void		init_bench(t_bench *bench, int enabled, int mode, t_stack *a);
+void		init_bench(t_bench *bench, t_options *options, t_stack *a);
 void		count_op(t_bench *bench, int op);
+void		emit_op(t_bench *bench, int op);
+char		*op_name(int op);
 void		print_bench(t_bench *bench);
+int			total_ops(t_bench *bench);
 
 t_stack		*ft_lstnew_stack(int value);
 t_stack		*ft_lstlast_stack(t_stack *head);
@@ -72,6 +80,7 @@ void		ft_lstadd_front_stack(t_stack **stack, t_stack *new);
 void		ft_lstadd_back_stack(t_stack **stack, t_stack *new);
 void		print_stack(t_stack *head, int fd);
 int			ft_lstsize_stack(t_stack *head);
+void		stack_alloc_error(t_stack **stack, char **args, int argc);
 
 void		ft_error(char *msg);
 void		ft_check_args(int argc, char **argv);

@@ -29,8 +29,7 @@ int	pa(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	if (push(stack_a, stack_b) == -1)
 		return (-1);
-	ft_putendl_fd("pa", 1);
-	count_op(bench, OP_PA);
+	emit_op(bench, OP_PA);
 	return (0);
 }
 
@@ -38,7 +37,6 @@ int	pb(t_stack **stack_a, t_stack **stack_b, t_bench *bench)
 {
 	if (push(stack_b, stack_a) == -1)
 		return (-1);
-	ft_putendl_fd("pb", 1);
-	count_op(bench, OP_PB);
+	emit_op(bench, OP_PB);
 	return (0);
 }
