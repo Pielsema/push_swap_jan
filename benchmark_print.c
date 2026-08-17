@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   benchmark_print.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsobotka <jsobotka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: pielsema <pielsema@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/08/05 15:18:00 by jsobotka          #+#    #+#             */
-/*   Updated: 2026/08/05 15:18:00 by jsobotka         ###   ########.fr       */
+/*   Updated: 2026/08/16 15:12:18 by pielsema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
